@@ -11,11 +11,11 @@ class ForumStatistics {
     private double averageCommentsPerUser;
     private double averageCommentsPerPost;
 
-    public void calculateAdvStatistics(com.kodilla.testing.forum.statistics.Statistics statistics) {
-        List<String> usersNames = statistics.usersNames();
+    public void calculateAdvStatistics(Statistic statistic) {
+        List<String> usersNames = statistic.usersNames();
         usersCount = usersNames.size();
-        postsCount = statistics.postsCount();
-        commentsCount = statistics.commentsCount();
+        postsCount = statistic.postsCount();
+        commentsCount = statistic.commentsCount();
 
         if (usersCount > 0) {
             averagePostsPerUser = (double) postsCount / usersCount;
@@ -52,3 +52,4 @@ class ForumStatistics {
         return usersCount;
     }
 }
+

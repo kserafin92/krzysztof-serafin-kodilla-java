@@ -1,11 +1,9 @@
 package com.kodilla.testing.forum;
 
-import com.kodilla.testing.forum.statistics.Statistics;
-
 import java.util.Arrays;
 import java.util.List;
 
-public class ForumStatisticDemo implements com.kodilla.testing.forum.statistics.Statistics {
+public class ForumStatisticDemo implements Statistic {
     private List<String> usersNames;
     private int postsCount;
     private int commentsCount;
@@ -37,8 +35,7 @@ public class ForumStatisticDemo implements com.kodilla.testing.forum.statistics.
         int comments = 50;
 
         ForumStatistics forumStatistics = new ForumStatistics();
-        forumStatistics.calculateAdvStatistics((Statistics) forumStatistics);
+        forumStatistics.calculateAdvStatistics((Statistic) forumStatistics);
         forumStatistics.showStatistics();
     }
 }
-

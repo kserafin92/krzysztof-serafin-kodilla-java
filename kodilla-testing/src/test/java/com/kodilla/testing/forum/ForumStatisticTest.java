@@ -8,10 +8,10 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-class ForumStatisticsTest {
+class ForumStatisticTest {
 
     @Mock
-    private com.kodilla.testing.forum.statistics.Statistics statisticsMock;
+    private Statistic statisticMock;
 
     private ForumStatistics forumStatistics;
 
@@ -24,12 +24,12 @@ class ForumStatisticsTest {
     @Test
     void testCalculateAdvStatisticsWithZeroPosts() {
         // Given
-        when(statisticsMock.postsCount()).thenReturn(0);
-        when(statisticsMock.commentsCount()).thenReturn(30);
-        when(statisticsMock.usersNames()).thenReturn(Collections.singletonList("User"));
+        when(statisticMock.postsCount()).thenReturn(0);
+        when(statisticMock.commentsCount()).thenReturn(30);
+        when(statisticMock.usersNames()).thenReturn(Collections.singletonList("User"));
 
         // When
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.calculateAdvStatistics(statisticMock);
 
         // Then
         assertEquals(0, forumStatistics.getPostsCount());
@@ -39,12 +39,12 @@ class ForumStatisticsTest {
     @Test
     void testCalculateAdvStatisticsWithThousandPosts() {
         // Given
-        when(statisticsMock.postsCount()).thenReturn(1000);
-        when(statisticsMock.commentsCount()).thenReturn(2000);
-        when(statisticsMock.usersNames()).thenReturn(Collections.singletonList("User"));
+        when(statisticMock.postsCount()).thenReturn(1000);
+        when(statisticMock.commentsCount()).thenReturn(2000);
+        when(statisticMock.usersNames()).thenReturn(Collections.singletonList("User"));
 
         // When
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.calculateAdvStatistics(statisticMock);
 
         // Then
         assertEquals(1000, forumStatistics.getPostsCount());
@@ -54,12 +54,12 @@ class ForumStatisticsTest {
     @Test
     void testCalculateAdvStatisticsWithZeroComments() {
         // Given
-        when(statisticsMock.postsCount()).thenReturn(100);
-        when(statisticsMock.commentsCount()).thenReturn(0);
-        when(statisticsMock.usersNames()).thenReturn(Collections.singletonList("User"));
+        when(statisticMock.postsCount()).thenReturn(100);
+        when(statisticMock.commentsCount()).thenReturn(0);
+        when(statisticMock.usersNames()).thenReturn(Collections.singletonList("User"));
 
         // When
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.calculateAdvStatistics(statisticMock);
 
         // Then
         assertEquals(0, forumStatistics.getCommentsCount());
@@ -69,12 +69,12 @@ class ForumStatisticsTest {
     @Test
     void testCalculateAdvStatisticsWhenCommentsLessThanPosts() {
         // Given
-        when(statisticsMock.postsCount()).thenReturn(100);
-        when(statisticsMock.commentsCount()).thenReturn(50);
-        when(statisticsMock.usersNames()).thenReturn(Collections.singletonList("User"));
+        when(statisticMock.postsCount()).thenReturn(100);
+        when(statisticMock.commentsCount()).thenReturn(50);
+        when(statisticMock.usersNames()).thenReturn(Collections.singletonList("User"));
 
         // When
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.calculateAdvStatistics(statisticMock);
 
         // Then
         assertTrue(forumStatistics.getCommentsCount() < forumStatistics.getPostsCount());
@@ -84,12 +84,12 @@ class ForumStatisticsTest {
     @Test
     void testCalculateAdvStatisticsWhenCommentsMoreThanPosts() {
         // Given
-        when(statisticsMock.postsCount()).thenReturn(100);
-        when(statisticsMock.commentsCount()).thenReturn(150);
-        when(statisticsMock.usersNames()).thenReturn(Collections.singletonList("User"));
+        when(statisticMock.postsCount()).thenReturn(100);
+        when(statisticMock.commentsCount()).thenReturn(150);
+        when(statisticMock.usersNames()).thenReturn(Collections.singletonList("User"));
 
         // When
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.calculateAdvStatistics(statisticMock);
 
         // Then
         assertTrue(forumStatistics.getCommentsCount() > forumStatistics.getPostsCount());
@@ -99,16 +99,15 @@ class ForumStatisticsTest {
     @Test
     void testCalculateAdvStatisticsWithZeroUsers() {
         // Given
-        when(statisticsMock.postsCount()).thenReturn(100);
-        when(statisticsMock.commentsCount()).thenReturn(150);
-        when(statisticsMock.usersNames()).thenReturn(Collections.emptyList());
+        when(statisticMock.postsCount()).thenReturn(100);
+        when(statisticMock.commentsCount()).thenReturn(150);
+        when(statisticMock.usersNames()).thenReturn(Collections.emptyList());
 
         // When
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.calculateAdvStatistics(statisticMock);
 
         // Then
         assertEquals(0, forumStatistics.getUsersCount());
 
     }
 }
-
