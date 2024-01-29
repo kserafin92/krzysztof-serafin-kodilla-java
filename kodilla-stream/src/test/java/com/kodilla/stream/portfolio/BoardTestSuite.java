@@ -172,8 +172,9 @@ class BoardTestSuite {
         return board.getTaskLists().stream()
                 .filter(taskList -> taskList.getName().equals("In Progress"))
                 .flatMap(taskList -> taskList.getTasks().stream())
-                .map(Task::getCreated)
-                .count();
+                .mapToDouble(task -> LocalDate.now().toEpochDay() - task.getCreated().toEpochDay())
+                .average()
+                .orElse(0.0);
 
     }
 }
