@@ -7,7 +7,7 @@ public class ExceptionHandling {
             SecondChallenge secondChallenge = new SecondChallenge();
             return secondChallenge.probablyIWillThrowException(x, y);
         } catch (Exception e) {
-            return "Exception caught: " + e;
+            return "Exception caught: " + e.getMessage();
         } finally {
             System.out.println("Finally block executed.");
         }
