@@ -1,7 +1,9 @@
 package com.kodilla.rps.FinalVersion;
 
 public enum GameCommand {
-    ROCK("1"), PAPER("2"), SCISSORS("3");
+    ROCK("1"),
+    PAPER("2"),
+    SCISSORS("3");
 
     private final String value;
 
