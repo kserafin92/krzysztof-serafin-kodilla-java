@@ -1,7 +1,7 @@
 package com.kodilla.patterns.strategy.social;
 
 public sealed class User
-        git initpermits Millenials, YGeneration, ZGeneration {
+        permits Millenials, YGeneration, ZGeneration {
 
         private final String username;
         protected SocialPublisher socialPublisher;
