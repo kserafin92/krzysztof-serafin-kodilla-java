@@ -1,17 +1,18 @@
 package com.kodilla.hibernate.tasklist.dao;
 
 import com.kodilla.hibernate.tasklist.TaskList;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.ID;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
+
 
 @SpringBootTest
 
@@ -20,6 +21,11 @@ public class TaskListDaoTestSuite {
     @Autowired
     private TaskListDao taskListDao;
 
+    @BeforeEach
+    public void clenup() {
+        taskListDao.deleteAll();
+    }
+    @Transactional
     @Test
     void testFindByListName() {
         // Given
@@ -31,10 +37,9 @@ public class TaskListDaoTestSuite {
 
         // Then
         assertNotNull(foundLists);
-        assertEquals(1, ((List<?>) foundLists).size());
+        assertEquals(1, (foundLists).size());
 
-        //CleanUp
-        taskListDao.deleteById(ID);
+
     }
 }
 
