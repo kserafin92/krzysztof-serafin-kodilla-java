@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.springframework.data.jpa.domain.AbstractPersistable_.ID;
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @SpringBootTest
@@ -33,7 +34,7 @@ public class TaskListDaoTestSuite {
         assertEquals(1, ((List<?>) foundLists).size());
 
         //CleanUp
-        taskListDao.deleteById(id);
+        taskListDao.deleteById(ID);
     }
 }
 
