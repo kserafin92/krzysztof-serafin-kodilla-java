@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -14,6 +16,8 @@ class CompanyDaoTestSuite {
     @Autowired
     private CompanyDao companyDao;
 
+    @Autowired
+    private EmployeeDao employeeDao;
     @Test
     void testSaveManyToMany() {
         //Given
@@ -58,5 +62,42 @@ class CompanyDaoTestSuite {
         } catch (Exception e) {
             //do nothing
         }
+    }
+    @Test
+    void testFindByNameStartingWith() {
+        // Given
+        Company company1 = new Company("ABC");
+        Company company2 = new Company("DEF");
+        Company company3 = new Company("GHI");
+
+        companyDao.saveAll(List.of(company1, company2, company3));
+
+        // When
+        List<Company> companiesStartingWithA = companyDao.findByNameStartingWith("ABC");
+
+        // Then
+        assertEquals(1, companiesStartingWithA.size());
+
+        // Clean up
+        companyDao.deleteAll();
+    }
+
+    @Test
+    void testFindByLastname() {
+        // Given
+        Employee employee1 = new Employee("aaa", "bbb");
+        Employee employee2 = new Employee("ccc", "bbb");
+        Employee employee3 = new Employee("aaa", "ddd");
+
+        employeeDao.saveAll(List.of(employee1, employee2, employee3));
+
+        // When
+        List<Employee> employeesWithLastnameDoe = employeeDao.findByLastname("bbb");
+
+        // Then
+        assertEquals(2, employeesWithLastnameDoe.size());
+
+        // Clean up
+        employeeDao.deleteAll();
     }
 }
