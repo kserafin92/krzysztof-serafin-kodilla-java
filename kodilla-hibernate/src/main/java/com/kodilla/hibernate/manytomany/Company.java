@@ -4,11 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-@NamedNativeQueries({
-        @NamedNativeQuery(
-                name = "Company.findByNameStartingWith",
-                query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :STARTING_WITH",
-                resultClass = Company.class
+@NamedQueries({
+        @NamedQuery(
+                name = "Company.findByNameFragment",
+                query = "FROM Company WHERE name LIKE :NAME_FRAGMENT"
         )
 })
 @Entity

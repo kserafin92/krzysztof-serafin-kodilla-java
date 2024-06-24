@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 @NamedQueries({
         @NamedQuery(
-                name = "Employee.findByLastname",
-                query = "FROM Employee WHERE lastname = :LASTNAME"
+                name = "Employee.findByLastnameFragment",
+                query = "FROM Employee WHERE lastname LIKE :LASTNAME_FRAGMENT"
         )
 })
 @Entity
