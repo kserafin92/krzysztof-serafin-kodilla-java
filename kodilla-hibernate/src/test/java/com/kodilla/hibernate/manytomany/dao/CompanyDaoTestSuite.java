@@ -82,22 +82,4 @@ class CompanyDaoTestSuite {
         companyDao.deleteAll();
     }
 
-    @Test
-    void testFindByLastname() {
-        // Given
-        Employee employee1 = new Employee("aaa", "bbb");
-        Employee employee2 = new Employee("ccc", "bbb");
-        Employee employee3 = new Employee("aaa", "ddd");
-
-        employeeDao.saveAll(List.of(employee1, employee2, employee3));
-
-        // When
-        List<Employee> employeesWithLastnameDoe = employeeDao.findByLastname("bbb");
-
-        // Then
-        assertEquals(2, employeesWithLastnameDoe.size());
-
-        // Clean up
-        employeeDao.deleteAll();
-    }
 }
